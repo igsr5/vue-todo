@@ -11,7 +11,10 @@
     </b-col>
     </b-row>
     </b-form-group>
-
+    <div class="mt-4">
+    <b-card v-for="(task, key) in tasks" :key='key' :title="task.name">
+    </b-card>
+    </div>
   </div>
 </template>
 
