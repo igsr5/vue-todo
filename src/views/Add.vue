@@ -7,7 +7,7 @@
     <b-form-input type="text" v-model='newTask'></b-form-input>
     </b-col>
     <b-col sm='1'>
-    <b-button>add</b-button>
+    <b-button @click="addTask()">add</b-button>
     </b-col>
     </b-row>
     </b-form-group>
@@ -31,6 +31,13 @@ export default {
               { name: 'shopping', status: 'done' },
           ]
         }
-    }
+    },
+    methods: {
+        addTask: function(){
+              var newTask = { name: this.newTask, status: 'yet' };
+              this.newTask = '';
+              this.tasks.unshift(newTask);
+          }
+      }
 }
 </script>
