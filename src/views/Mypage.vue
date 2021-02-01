@@ -23,8 +23,17 @@
 .green.card {
 background: #c5e8d7;
 }
+
 .grey.card {
 background: #d6d6d6;
+}
+
+.card-title {
+    transition: .5s;
+  }
+
+.card-title:hover {
+    opacity: 0.5;
 }
 </style>
 
@@ -33,7 +42,7 @@ export default {
 name: 'Mypage',
         data: function(){
           return {
-newTask: 'test',
+newTask: '',
          tasks: [
          { name: 'homework', status: 'done' },
          { name: 'test', status: 'yet'},
