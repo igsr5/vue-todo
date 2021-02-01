@@ -13,6 +13,7 @@
     </b-form-group>
     <div class="mt-4">
     <b-card v-for="(task, key) in tasks" :key='key' :title="task.name">
+    <b-form-checkbox v-model="task.status" value="done" unchecked-value="yet">{{ task.status }}</b-form-checkbox>
     </b-card>
     </div>
   </div>
@@ -25,9 +26,9 @@ export default {
         return {
           newTask: 'test',
           tasks: [
-              { name: 'homework', done: true },
-              { name: 'test', done: false },
-              { name: 'shopping', done: true },
+              { name: 'homework', status: 'done' },
+              { name: 'test', status: 'yet'},
+              { name: 'shopping', status: 'done' },
           ]
         }
     }
