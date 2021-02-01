@@ -12,7 +12,7 @@
 </b-row>
 </b-form-group>
 <div>
-<b-card v-for="(task, key) in tasks" :key='key' :class="statusColor(task.status)">
+<b-card v-for="(task, key) in tasks" :key='key' :class="statusColor(task.status)" v-show="!task.delete">
 <template v-if="task.edit">
   <b-row class='mt-4'>
   <b-col sm='6' offset='3'>
@@ -24,8 +24,8 @@
   </b-row>
 </template>
 <h3 class="card-title" v-else @click="taskEdit(key)">{{ task.name }}</h3>
-
 <b-form-checkbox v-model="task.status" value="done" unchecked-value="yet">{{ task.status }}</b-form-checkbox>
+<a href="#" @click="taskDelete(key)">delete</a>
 </b-card>
 </div>
 </div>
@@ -61,7 +61,7 @@ newTask: '',
         },
 methods: {
 addTask: function(){
-           var newTask = { name: this.newTask, status: 'yet', edit: false };
+           var newTask = { name: this.newTask, status: 'yet', edit: false, delete: false };
            this.newTask = '';
            this.tasks.unshift(newTask);
          },
@@ -74,6 +74,9 @@ statusColor: function(status){
 taskEdit: function(id){
   this.tasks[id].edit = !this.tasks[id].edit;
           },
+          taskDelete(id){
+              this.tasks[id].delete = true;
+            }
          },
          }
 </script>
