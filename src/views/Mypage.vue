@@ -11,8 +11,20 @@
 </b-col>
 </b-row>
 </b-form-group>
-<div class="mt-4">
-<b-card v-for="(task, key) in tasks" :key='key' :title="task.name" :class="statusColor(task.status)">
+<div>
+<b-card v-for="(task, key) in tasks" :key='key' :class="statusColor(task.status)">
+<template v-if="task.edit">
+  <b-row class='mt-4'>
+  <b-col sm='6' offset='3'>
+  <b-form-input type="text" v-model='task.name'></b-form-input>
+  </b-col>
+  <b-col sm='1'>
+  <b-button @click="editTask(key)">edit</b-button>
+  </b-col>
+  </b-row>
+</template>
+<h3 class="card-title" v-else @click="taskEdit(key)">{{ task.name }}</h3>
+
 <b-form-checkbox v-model="task.status" value="done" unchecked-value="yet">{{ task.status }}</b-form-checkbox>
 </b-card>
 </div>
@@ -44,15 +56,12 @@ name: 'Mypage',
           return {
 newTask: '',
          tasks: [
-         { name: 'homework', status: 'done' },
-         { name: 'test', status: 'yet'},
-         { name: 'shopping', status: 'done' },
          ]
           }
         },
 methods: {
 addTask: function(){
-           var newTask = { name: this.newTask, status: 'yet' };
+           var newTask = { name: this.newTask, status: 'yet', edit: false };
            this.newTask = '';
            this.tasks.unshift(newTask);
          },
@@ -62,6 +71,12 @@ statusColor: function(status){
                  'green': status == 'yet',
                }
              },
+taskEdit: function(id){
+  this.tasks[id].edit = true;
+          },
+editTask(id){
+           this.tasks[id].edit = false
          },
-}
+         },
+         }
 </script>
