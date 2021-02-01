@@ -4,18 +4,29 @@
     <b-form-group>
     <b-row class='mt-4'>
     <b-col sm='6' offset='3'>
-    <b-form-input type="text"></b-form-input>
+    <b-form-input type="text" v-model='newTask'></b-form-input>
     </b-col>
     <b-col sm='1'>
     <b-button>add</b-button>
     </b-col>
     </b-row>
     </b-form-group>
+
   </div>
 </template>
 
 <script>
 export default {
     name: 'Add',
+    data: function(){
+        return {
+          newTask: 'test',
+          tasks: [
+              { name: 'homework', done: true },
+              { name: 'test', done: false },
+              { name: 'shopping', done: true },
+          ]
+        }
+    }
 }
 </script>
