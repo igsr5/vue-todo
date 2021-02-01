@@ -19,7 +19,7 @@
   <b-form-input type="text" v-model='task.name'></b-form-input>
   </b-col>
   <b-col sm='1'>
-  <b-button @click="editTask(key)">edit</b-button>
+  <b-button @click="taskEdit(key)">edit</b-button>
   </b-col>
   </b-row>
 </template>
@@ -72,11 +72,8 @@ statusColor: function(status){
                }
              },
 taskEdit: function(id){
-  this.tasks[id].edit = true;
+  this.tasks[id].edit = !this.tasks[id].edit;
           },
-editTask(id){
-           this.tasks[id].edit = false
-         },
          },
          }
 </script>
