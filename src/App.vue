@@ -2,10 +2,12 @@
   <div id="app">
     <div id="nav">
       <router-link to="/">Home</router-link> |
-      <router-link to="/add">Add</router-link>
+      <router-link to="/mypage">Mypage</router-link>
     </div>
     <b-container>
+    <keep-alive>
     <router-view/>
+    </keep-alive>
     </b-container>
   </div>
 </template>
