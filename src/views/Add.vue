@@ -13,3 +13,9 @@
     </b-form-group>
   </div>
 </template>
+
+<script>
+export default {
+    name: 'Add',
+}
+</script>

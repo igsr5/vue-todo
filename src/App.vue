@@ -4,7 +4,9 @@
       <router-link to="/">Home</router-link> |
       <router-link to="/add">Add</router-link>
     </div>
+    <b-container>
     <router-view/>
+    </b-container>
   </div>
 </template>
 
